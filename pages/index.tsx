@@ -82,6 +82,11 @@ export default function Home() {
                 <Text>{weatherData.name} Weather</Text>
               </Group>
               <Group position="left">
+                <img
+                  src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@4x.png`}
+                  width="100px"
+                  height="100px"
+                />
                 <Text size="lg" weight={500}>
                   Currently {weatherData.main.temp}&deg;F
                 </Text>
