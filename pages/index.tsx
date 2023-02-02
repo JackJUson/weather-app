@@ -1,5 +1,5 @@
 import { Inter } from "@next/font/google";
-import { Paper } from "@mantine/core";
+import { Paper, TextInput, Button, Text, Group } from "@mantine/core";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +22,18 @@ export default function Home() {
           transform: "translate(-50%, -50%)",
         }}
       >
-        <Paper withBorder p="lg" style={{ maxWidth: "500px" }}></Paper>
+        <Paper withBorder p="lg" style={{ maxWidth: "500px" }}>
+          <Group position="apart">
+            <Text size="xl" weight={500}>
+              Get The Weather!
+            </Text>
+          </Group>
+          <Group position="apart">
+            <Text size="lg">
+              Enter a city, and get the weather below!
+            </Text>
+          </Group>
+        </Paper>
       </div>
     </div>
   );
