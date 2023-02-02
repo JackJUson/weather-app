@@ -13,21 +13,20 @@ export default function Home() {
 
   async function getWeatherData() {
     // https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-    // Query data
-    // if there is an error, throw error
-    // if not, save data
-
     try {
+      // Query data
       const serverResponse = await fetch(
         "https://api.openweathermap.org/data/2.5/weather?" +
-        "q=" +
-        city +
-        "&appid=" +
-        API_KEY + "&units=imperial"
-      )
+          "q=" +
+          city +
+          "&appid=" +
+          API_KEY +
+          "&units=imperial"
+      );
       const data = await serverResponse.json();
-      console.log(data);
+      // if there is an error, throw error
       if (data?.cod === "400") throw data;
+      // if not, save data
       setWeatherData(data);
     } catch (err) {
       console.log(err);
@@ -69,10 +68,26 @@ export default function Home() {
             />
           </Group>
           <Group position="apart">
-            <Button variant="gradient" size="md" onClick={() => getWeatherData()}>
+            <Button
+              variant="gradient"
+              size="md"
+              onClick={() => getWeatherData()}
+            >
               Get Weather
             </Button>
           </Group>
+          {Object.keys(weatherData).length !== 0 ? (
+            <>
+              <Group position="left">
+                <Text>{weatherData.name} Weather</Text>
+              </Group>
+              <Group position="left">
+                <Text size="lg" weight={500}>
+                  Currently {weatherData.main.temp}&deg;F
+                </Text>
+              </Group>
+            </>
+          ) : null}
         </Paper>
       </div>
     </div>
