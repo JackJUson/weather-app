@@ -28,10 +28,16 @@ export default function Home() {
               Get The Weather!
             </Text>
           </Group>
+          <Group position="apart" mb="sm">
+            <Text size="lg">Enter a city, and get the weather below!</Text>
+          </Group>
+          <Group position="apart" mb="sm">
+            <TextInput label="City Name" placeholder="example: Sydney" />
+          </Group>
           <Group position="apart">
-            <Text size="lg">
-              Enter a city, and get the weather below!
-            </Text>
+            <Button variant="gradient" size="md">
+              Get Weather
+            </Button>
           </Group>
         </Paper>
       </div>
