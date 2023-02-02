@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const [city, setCity] = useState("");
 
-  const API_KEY = process.env.NEXT_APP_WEATHER_KEY;
+  const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
   const [weatherData, setWeatherData] = useState<any>({});
 
@@ -16,6 +16,22 @@ export default function Home() {
     // Query data
     // if there is an error, throw error
     // if not, save data
+
+    try {
+      const serverResponse = await fetch(
+        "https://api.openweathermap.org/data/2.5/weather?" +
+        "q=" +
+        city +
+        "&appid=" +
+        API_KEY + "&units=imperial"
+      )
+      const data = await serverResponse.json();
+      console.log(data);
+      if (data?.cod === "400") throw data;
+      setWeatherData(data);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   return (
