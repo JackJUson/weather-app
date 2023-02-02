@@ -25,6 +25,7 @@ export default function Home() {
       );
       const data = await serverResponse.json();
       // if there is an error, throw error
+      console.log(data);
       if (data?.cod === "400") throw data;
       // if not, save data
       setWeatherData(data);
@@ -79,7 +80,7 @@ export default function Home() {
           {Object.keys(weatherData).length !== 0 ? (
             <>
               <Group position="left">
-                <Text>{weatherData.name} Weather</Text>
+                <Text size="xl" weight={500} mt="lg">{weatherData.name} Weather</Text>
               </Group>
               <Group position="left">
                 <img
