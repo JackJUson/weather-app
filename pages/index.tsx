@@ -14,10 +14,16 @@ export default function Home() {
         backgroundSize: "cover",
       }}
     >
-      <Paper withBorder p="lg" style={{ maxWidth: "500px" }}>
-
-      </Paper>
-
+      <div
+        style={{
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
+        <Paper withBorder p="lg" style={{ maxWidth: "500px" }}></Paper>
+      </div>
     </div>
   );
 }
