@@ -21,11 +21,10 @@ export default function Home() {
           city +
           "&appid=" +
           API_KEY +
-          "&units=imperial"
+          "&units=metric"
       );
       const data = await serverResponse.json();
       // if there is an error, throw error
-      console.log(data);
       if (data?.cod === "400") throw data;
       // if not, save data
       setWeatherData(data);
@@ -89,7 +88,7 @@ export default function Home() {
                   height="100px"
                 />
                 <Text size="lg" weight={500}>
-                  Currently {weatherData.main.temp}&deg;F
+                  Currently {weatherData.main.temp}&deg;C
                 </Text>
               </Group>
             </>
