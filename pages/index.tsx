@@ -7,6 +7,17 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const [city, setCity] = useState("");
 
+  const API_KEY = process.env.NEXT_APP_WEATHER_KEY;
+
+  const [weatherData, setWeatherData] = useState<any>({});
+
+  async function getWeatherData() {
+    // https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+    // Query data
+    // if there is an error, throw error
+    // if not, save data
+  }
+
   return (
     <div
       style={{
@@ -35,10 +46,14 @@ export default function Home() {
             <Text size="lg">Enter a city, and get the weather below!</Text>
           </Group>
           <Group position="apart" mb="sm">
-            <TextInput label="City Name" placeholder="example: Sydney" />
+            <TextInput
+              label="City Name"
+              placeholder="example: Sydney"
+              onChange={(e) => setCity(e.target.value)}
+            />
           </Group>
           <Group position="apart">
-            <Button variant="gradient" size="md">
+            <Button variant="gradient" size="md" onClick={() => getWeatherData()}>
               Get Weather
             </Button>
           </Group>
